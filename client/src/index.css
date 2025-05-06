@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
 @import "tailwindcss";
 
+@theme {
+    --font-poppins: 'Poppins', sans-serif;
+}
 
+@keyframes slide-down {
+    from {
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@layer utilities {
+    .animate-slide-down {
+        animation: slide-down 0.5s ease-out;
+    }
+}
