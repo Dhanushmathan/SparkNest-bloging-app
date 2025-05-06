@@ -1,15 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/config.js';
+import router from './routes/userRoutes.js';
 
 const app = express();
+app.use(express.json());
+
 dotenv.config();
-
-app.get('/', (req, res) => {
-    res.json({ message: 'Hello from the server!' });
-});
-
 connectDB();
+
+app.use('/api/users', router);
 
 const PORT = process.env.PORT;
 
