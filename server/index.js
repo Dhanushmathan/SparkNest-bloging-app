@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { connectDB } from './config/config.js';
 
 const app = express();
 dotenv.config();
@@ -7,6 +8,8 @@ dotenv.config();
 app.get('/', (req, res) => {
     res.json({ message: 'Hello from the server!' });
 });
+
+connectDB();
 
 const PORT = process.env.PORT;
 
