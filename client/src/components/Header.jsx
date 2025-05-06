@@ -16,7 +16,7 @@ const Header = () => {
                     Kakashi's Blog</Link>
             </div>
             <div className='flex items-center justify-between'>
-                <div className='flex items-center space-x-2'>
+                <div className='flex items-center space-x-2 mr-3'>
                     <Search />
                     <button
                         className='sm:hidden block cursor-pointer border border-gray-300 bg-gray-200 rounded-full p-1'
@@ -39,7 +39,7 @@ const Header = () => {
                         <li className='hover:scale-105 transition-transform duration-200'>
                             <Link to="/dashboard" className='hover:text-emerald-700'>Dashboard</Link>
                         </li>
-                        <li className='block sm:hidden lg:block bg-gray-200 px-5 py-2 sm:px-2.5 sm:py-1.5 rounded-full'>
+                        <li className='block sm:hidden lg:block border border-gray-300 bg-gray-200 hover:bg-gray-400 px-5 py-2 sm:px-2.5 sm:py-1.5 rounded-full'>
                             <Link to="/sign-in">Sign In</Link>
                         </li>
                     </ul>
