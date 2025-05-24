@@ -8,10 +8,10 @@ const Header = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);
 
     return (
-        <header className='bg-white flex justify-between items-center sm:px-4 sm:py-1.5 px-2 py-1.5 font-poppins shadow-md space-x-2'>
+        <header className='bg-white flex justify-between items-center sm:px-4 sm:py-1 px-2 py-1.5 font-poppins shadow-md space-x-2'>
             <div className='flex items-center'>
                 <img src={sparknestLogo} alt="Sparknest Logo" className='w-14 h-11 object-contain hidden lg:block' />
-                <Link to="/" className='sm:text-[1.30rem] text-lg font-bold whitespace-nowrap self-end'>
+                <Link to="/" className='sm:text-[1.25rem] text-lg font-bold whitespace-nowrap self-end'>
                     Kakashi's Blog</Link>
             </div>
             <div className='flex items-center justify-between'>
