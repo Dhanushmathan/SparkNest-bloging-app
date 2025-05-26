@@ -57,18 +57,19 @@ const SignUp = () => {
   }
 
   return (
-    <div className='flex flex-col lg:flex-row items-center lg:space-x-20 font-poppins p-3'>
+    <div className='flex flex-col items-center md:flex-row lg:flex-row lg:space-x-20 p-3 h-screen'>
       {/* Left Side with Abstract Background Image */}
-      <div className='hidden sm:flex flex-col items-center lg:w-1/2 w-full h-80'>
+      <div className='hidden sm:flex flex-col items-center lg:w-1/2 w-full'>
         <img
           src={bloggerAB}
           alt='Abstract'
-          className='w-[85%]'
+          className='w-[85%] lg:w-[90%] h-auto object-cover mt-5 lg:mt-0 lg:mb-0 mb-5 max-w-md mx-auto'
         />
       </div>
 
       {/* Right Side with Sign Up Form */}
-      <div className='flex flex-col items-center w-full lg:w-1/2 max-w-md mr-0 sm:mr-16 mt-5'>
+      <div className='flex flex-col items-center w-full lg:w-1/2 max-w-md mr-0 md:mr-10 lg:mr-16 mt-5
+        md:justify-center md:h-screen md:mt-0'>
         <form className='w-full' onSubmit={handleSubmit}>
 
           <div className='mb-2 text-center'>
@@ -110,7 +111,7 @@ const SignUp = () => {
         </form>
       </div>
 
-      <div className='block sm:hidden mt-5 lg:w-1/2 w-full h-80'>
+      <div className='block xs:hidden mt-5 lg:w-1/2 w-full'>
         <img
           src={bloggerAB}
           alt='Abstract'
