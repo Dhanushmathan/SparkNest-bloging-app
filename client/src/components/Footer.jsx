@@ -11,19 +11,19 @@ const Footer = () => {
                     </div>
                     <div className='grid grid-cols-2 text-left sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-6'>
                         <div className='flex flex-col space-y-4'>
-                            <h2 className='text-lg'>ABOUT</h2>
-                            <a href='https://www.100jsprojects.com' className='text-xs hover:underline'>100+ Projects</a>
-                            <a href="https://www.linkedin.com/in/dhanushmathan2394/" className='text-xs hover:underline'>Dhanush's Blog</a>
+                            <h2 className='text-base font-medium'>ABOUT</h2>
+                            <a href='https://www.100jsprojects.com' className='text-[11px] hover:underline'>100+ Projects</a>
+                            <a href="https://www.linkedin.com/in/dhanushmathan2394/" className='text-[11px] hover:underline'>Dhanush's Blog</a>
                         </div>
                         <div className='flex flex-col space-y-4'>
-                            <h2 className='text-lg'>FOLLOW US</h2>
-                            <a href='https://github.com/dhanushmathan' className='text-xs hover:underline'>Github</a>
-                            <a href="https://www.linkedin.com/in/dhanushmathan2394/" className='text-xs hover:underline'>Discord</a>
+                            <h2 className='text-base font-medium'>FOLLOW US</h2>
+                            <a href='https://github.com/dhanushmathan' className='text-[11px] hover:underline'>Github</a>
+                            <a href="https://www.linkedin.com/in/dhanushmathan2394/" className='text-[11px] hover:underline'>Discord</a>
                         </div>
                         <div className='flex flex-col space-y-4'>
-                            <h2 className='text-lg'>LEGAL</h2>
-                            <span className='text-xs'>Privacy Policy</span>
-                            <a href="#" className='text-xs hover:underline'>Terms & Conditions</a>
+                            <h2 className='text-base font-medium'>LEGAL</h2>
+                            <span className='text-[11px]'>Privacy Policy</span>
+                            <a href="#" className='text-[11px] hover:underline'>Terms & Conditions</a>
                         </div>
                     </div>
                 </div>
