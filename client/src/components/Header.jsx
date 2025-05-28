@@ -1,18 +1,22 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 import sparknestLogo from '../assets/sparknest logo.png';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 
     const [isNavOpen, setIsNavOpen] = useState(false);
+    const { currentUser } = useSelector(state => state.user);
+
+    const [showDropdown, setShowDropdown] = useState(false);
 
     return (
         <header className='bg-white flex justify-between items-center sm:px-4 sm:py-1 px-2 py-1.5 font-poppins shadow-md space-x-2'>
             <div className='flex items-center'>
                 <img src={sparknestLogo} alt="Sparknest Logo" className='w-14 h-11 object-contain hidden lg:block' />
                 <Link to="/" className='sm:text-[1.25rem] text-lg font-bold whitespace-nowrap self-end'>
-                    Kakashi's Blog</Link>
+                    Kakashi&apos;s Blog
+                </Link>
             </div>
             <div className='flex items-center justify-between'>
                 <div className='flex items-center space-x-2 mr-3'>
@@ -52,24 +56,61 @@ const Header = () => {
                 <nav className={`${isNavOpen ? 'block animate-slide-down sm:flex' : 'hidden'} absolute md:block sm:static top-12 left-0 w-full h-[80%] bg-white shadow-md sm:shadow-none sm:bg-transparent z-10 transition-all duration-300 ease-in-out`}>
                     <ul className='flex flex-col font-medium sm:flex-row items-start ml-5 space-y-5 sm:space-y-0 sm:space-x-3 lg:space-x-5 p-4 sm:p-0 xl:space-x-8'>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/" className='hover:text-emerald-700 text-[15px]'>Home</Link>
+                            <Link to="/" className='hover:text-emerald-700 text-[15px] lg:text-[13px]'>Home</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/about" className='hover:text-emerald-700 text-[15px]'>About</Link>
+                            <Link to="/about" className='hover:text-emerald-700 text-[15px] lg:text-[13px]'>About</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/projects" className='hover:text-emerald-700 text-[15px]'>Projects</Link>
+                            <Link to="/projects" className='hover:text-emerald-700 text-[15px] lg:text-[13px]'>Projects</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/dashboard" className='hover:text-emerald-700 text-[15px]'>Dashboard</Link>
+                            <Link to="/dashboard" className='hover:text-emerald-700 text-[15px] lg:text-[13px]'>Dashboard</Link>
                         </li>
-                        <li className='block sm:hidden lg:block border border-gray-300 bg-gray-200 hover:bg-gray-400 px-5 py-2 sm:px-2.5 sm:py-1 rounded-full'>
-                            <Link to="/sign-in" className='text-[15px]'>Sign In</Link>
-                        </li>
+                        {
+                            currentUser ? (
+                                <li className='relative block sm:hidden lg:block border border-gray-300 bg-gray-200 hover:bg-gray-400 rounded-full'>
+                                    <img
+                                        src={currentUser.profilePicture}
+                                        alt="userpic"
+                                        className='w-8 h-8 rounded-full cursor-pointer'
+                                        onClick={() => setShowDropdown((prev) => !prev)}
+                                    />
+                                    {showDropdown && (
+                                        <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-20 py-2">
+                                            <div className="px-4 py-2 border-b border-gray-100">
+                                                <div className="font-medium text-[13px] text-gray-800">{currentUser.username}</div>
+                                                <div className="text-[11px] text-gray-500">{currentUser.email}</div>
+                                            </div>
+                                            <Link
+                                                to="/dashboard?tab=profile"
+                                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
+                                                onClick={() => setShowDropdown(false)}
+                                            >
+                                                Profile
+                                            </Link>
+                                            <button
+                                                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm cursor-pointer"
+                                                onClick={() => {
+                                                    // sign out logic here
+                                                    setShowDropdown(false);
+                                                }}
+                                            >
+                                                Sign Out
+                                            </button>
+                                        </div>
+                                    )}
+                                </li>
+                            ) : (
+                                <li className='block sm:hidden lg:block border border-gray-300 bg-gray-200 hover:bg-gray-400 px-5 py-2 sm:px-2.5 sm:py-1 rounded-full'>
+                                    <Link to="/sign-in" className='text-[15px]'>Sign In</Link>
+                                </li>
+                            )
+                        }
                     </ul>
                 </nav>
-            </div>
-        </header>
+            </div >
+        </header >
     );
 }
 
