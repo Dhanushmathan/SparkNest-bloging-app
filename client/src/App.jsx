@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import Header from './components/Header';
 import Search from './components/Search';
 import Footer from './components/Footer';
+import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
 
@@ -23,7 +24,9 @@ const App = () => {
         <Route path='/search' element={<Search />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route element={<PrivateRoute />}>
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Route>
         <Route path='/projects' element={<Projects />} />
       </Routes>
       {pathname !== '/search' && <Footer />}
