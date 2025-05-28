@@ -71,4 +71,37 @@ export const signin = async (req, res, next) => {
         next(error);
     }
 
-}
+};
+
+export const google = async (req, res, next) => {
+    const { name, email, googlePhotoURL } = req.body;
+
+    try {
+        const existingUser = await UserModel.findOne({ email });
+        if (existingUser) {
+            const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET);
+            const { password, ...rest } = existingUser._doc; // Destructure to remove password and other sensitive fields
+            res.status(200).cookie('access_token', token, {
+                httpOnly: true,
+            }).json(rest);
+        } else {
+            const generatedPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8); // Generate a random password
+            const hashedPassword = await bcrypt.hashSync(generatedPassword, 10);
+            const newUser = new UserModel({
+                username: name.toLowerCase().split(' ').join('') + Math.random().toString(9).slice(-4),
+                email,
+                password: hashedPassword,
+                profilePicture: googlePhotoURL
+            });
+            await newUser.save();
+            const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+            const { password, ...rest } = newUser._doc;
+            res.status(200).cookie('access_token', token, {
+                httpOnly: true,
+            }).json(rest);
+        };
+    } catch (error) {
+        next(error);
+    }
+
+};

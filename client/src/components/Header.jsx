@@ -49,22 +49,22 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" viewBox="0 0 24 24"><path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
                     </button>
                 </div>
-                <nav className={`${isNavOpen ? 'block animate-slide-down sm:flex' : 'hidden'} absolute md:block sm:static top-12 left-0 w-full bg-white shadow-md sm:shadow-none sm:bg-transparent z-10 transition-all duration-300 ease-in-out`}>
-                    <ul className='flex flex-col font-medium sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3 lg:space-x-5 p-4 sm:p-0 xl:space-x-8'>
+                <nav className={`${isNavOpen ? 'block animate-slide-down sm:flex' : 'hidden'} absolute md:block sm:static top-12 left-0 w-full h-[80%] bg-white shadow-md sm:shadow-none sm:bg-transparent z-10 transition-all duration-300 ease-in-out`}>
+                    <ul className='flex flex-col font-medium sm:flex-row items-start ml-5 space-y-5 sm:space-y-0 sm:space-x-3 lg:space-x-5 p-4 sm:p-0 xl:space-x-8'>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/" className='hover:text-emerald-700 text-[13px]'>Home</Link>
+                            <Link to="/" className='hover:text-emerald-700 text-[15px]'>Home</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/about" className='hover:text-emerald-700 text-[13px]'>About</Link>
+                            <Link to="/about" className='hover:text-emerald-700 text-[15px]'>About</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/projects" className='hover:text-emerald-700 text-[13px]'>Projects</Link>
+                            <Link to="/projects" className='hover:text-emerald-700 text-[15px]'>Projects</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/dashboard" className='hover:text-emerald-700 text-[13px]'>Dashboard</Link>
+                            <Link to="/dashboard" className='hover:text-emerald-700 text-[15px]'>Dashboard</Link>
                         </li>
                         <li className='block sm:hidden lg:block border border-gray-300 bg-gray-200 hover:bg-gray-400 px-5 py-2 sm:px-2.5 sm:py-1 rounded-full'>
-                            <Link to="/sign-in" className='text-[13px]'>Sign In</Link>
+                            <Link to="/sign-in" className='text-[15px]'>Sign In</Link>
                         </li>
                     </ul>
                 </nav>

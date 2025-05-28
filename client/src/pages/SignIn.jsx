@@ -3,6 +3,7 @@ import bloggerAB from '../assets/blogger.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInFailure, signInStart, signInSuccess } from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 
 const SignIn = () => {
 
@@ -69,10 +70,13 @@ const SignIn = () => {
       {/* Right Side with Sign Up Form */}
       <div className='flex flex-col items-center w-full lg:w-1/2 max-w-md mr-0 md:mr-10 lg:mr-16 mt-5
         md:justify-center md:h-screen md:mt-0'>
-        <form className='w-full' onSubmit={handleSubmit}>
+        <form className='w-full space-y-3' onSubmit={handleSubmit}>
 
           <div className='mb-2 text-center'>
             <h1 className='sm:text-3xl text-xl font-bold mb-2'>Sign In</h1>
+            <p className='text-gray-600 sm:text-sm text-xs mb-2'>
+              Sign in with your account, or use Google login below.
+            </p>
           </div>
 
           <div className='mb-4'>
@@ -99,19 +103,13 @@ const SignIn = () => {
             ) : 'Sign In'}
           </button>
 
-          <p className="mt-4 text-center text-gray-600 sm:text-sm text-xs">
+          <OAuth />
+
+          <p className="text-center text-gray-600 sm:text-sm text-xs">
             Don't have an account? <Link to="/sign-up" className="text-blue-600 hover:text-blue-700 font-bold">Sign Up</Link>
           </p>
 
         </form>
-      </div>
-
-      <div className='block xs:hidden mt-5 lg:w-1/2 w-full'>
-        <img
-          src={bloggerAB}
-          alt='Abstract'
-          className='w-[85%]'
-        />
       </div>
     </div>
   )

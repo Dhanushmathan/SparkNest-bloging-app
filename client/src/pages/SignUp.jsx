@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import bloggerAB from '../assets/blogger.png'
 import { Link, useNavigate } from 'react-router-dom';
+import OAuth from '../components/OAuth';
 
 const SignUp = () => {
 
@@ -70,10 +71,13 @@ const SignUp = () => {
       {/* Right Side with Sign Up Form */}
       <div className='flex flex-col items-center w-full lg:w-1/2 max-w-md mr-0 md:mr-10 lg:mr-16 mt-5
         md:justify-center md:h-screen md:mt-0'>
-        <form className='w-full' onSubmit={handleSubmit}>
+        <form className='w-full space-y-3' onSubmit={handleSubmit}>
 
           <div className='mb-2 text-center'>
             <h1 className='sm:text-3xl text-xl font-bold mb-2'>Sign Up</h1>
+            <p className='text-gray-600 sm:text-sm text-xs'>
+              Sign up with your account, or use Google login below.
+            </p>
             <input type='text' id='username' value={formData.username} className='mt-1 block w-full border-b border-blue-700 shadow-sm p-2 outline-none' placeholder='Username' onChange={handleChange} />
           </div>
 
@@ -101,19 +105,13 @@ const SignUp = () => {
             ) : 'Sign Up'}
           </button>
 
-          <p className="mt-4 text-center text-gray-600 sm:text-sm text-xs">
+          <OAuth />
+
+          <p className="text-center text-gray-600 sm:text-sm text-xs">
             Have an account? <Link to="/sign-in" className="text-blue-600 hover:text-blue-700 font-bold">Sign In</Link>
           </p>
 
         </form>
-      </div>
-
-      <div className='block xs:hidden mt-5 lg:w-1/2 w-full'>
-        <img
-          src={bloggerAB}
-          alt='Abstract'
-          className='w-[85%]'
-        />
       </div>
     </div>
   )
