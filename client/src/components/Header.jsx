@@ -11,7 +11,7 @@ const Header = () => {
     const [showDropdown, setShowDropdown] = useState(false);
 
     return (
-        <header className='bg-white flex justify-between items-center sm:px-4 sm:py-1 px-2 py-1.5 font-poppins shadow-md space-x-2'>
+        <header className='bg-white flex justify-between items-center sm:px-4 sm:py-2 px-2 py-1.5 font-poppins shadow-md space-x-2'>
             <div className='flex items-center'>
                 <img src={sparknestLogo} alt="Sparknest Logo" className='w-14 h-11 object-contain hidden lg:block' />
                 <Link to="/" className='sm:text-[1.25rem] text-lg font-bold whitespace-nowrap self-end'>
@@ -61,18 +61,18 @@ const Header = () => {
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className='font-semibold' width="1.4em" height="1.4em" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"></path></svg>
                     </button>
-                    <ul className='flex flex-col font-medium sm:flex-row items-start space-y-5 sm:space-y-0 sm:space-x-3 lg:space-x-5 p-4 sm:p-0 xl:space-x-8'>
+                    <ul className='flex flex-col font-medium sm:flex-row items-start md:items-center space-y-5 sm:space-y-0 sm:space-x-3 lg:space-x-5 p-4 sm:p-0 xl:space-x-8'>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/" className='hover:text-emerald-700 text-[15px] lg:text-[13px]'>Home</Link>
+                            <Link to="/" className='hover:text-emerald-700 text-[15px] lg:text-[16px]'>Home</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/about" className='hover:text-emerald-700 text-[15px] lg:text-[13px]'>About</Link>
+                            <Link to="/about" className='hover:text-emerald-700 text-[15px] lg:text-[16px]'>About</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/projects" className='hover:text-emerald-700 text-[15px] lg:text-[13px]'>Projects</Link>
+                            <Link to="/projects" className='hover:text-emerald-700 text-[15px] lg:text-[16px]'>Projects</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/dashboard" className='hover:text-emerald-700 text-[15px] lg:text-[13px]'>Dashboard</Link>
+                            <Link to="/dashboard" className='hover:text-emerald-700 text-[15px] lg:text-[16px]'>Dashboard</Link>
                         </li>
                         {
                             currentUser ? (
