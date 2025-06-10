@@ -1,8 +1,9 @@
 import express from 'express';
-import { text } from '../controllers/userControllers.js';
+import { uploadProfileImage } from '../controllers/userControllers.js';
+import upload from '../middlewares/upload.js';
 
 const router = express.Router();
 
-router.get('/', text);
+router.post('/upload-profile/:id', upload.single('image'), uploadProfileImage);
 
 export default router;
