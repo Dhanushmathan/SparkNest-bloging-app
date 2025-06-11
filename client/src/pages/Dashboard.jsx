@@ -17,7 +17,7 @@ const Dashboard = () => {
   }, [location.search]);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col md:flex-row h-screen">
       {/* Sidebar on the left */}
       <DashSidebar />
       {/* Profile/content on the right */}
