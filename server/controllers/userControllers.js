@@ -10,7 +10,7 @@ export const uploadProfileImage = async (req, res) => {
             folder: "profile-pictures"
         });
 
-        const userId = req.params.id;
+        const userId = req.params.userId;
         const user = await UserModel.findById(userId);
         if (!user) {
             fs.unlinkSync(imagePath);

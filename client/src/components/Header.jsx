@@ -91,7 +91,7 @@ const Header = () => {
                                     </li>
                                     <li className='hidden lg:block relative border border-gray-300 bg-gray-200 hover:bg-gray-400 rounded-full'>
                                         <img
-                                            src={currentUser.profilePicture}
+                                            src={currentUser.profilePicture ? currentUser.profilePicture : "https://static-00.iconduck.com/assets.00/profile-circle-icon-512x512-zxne30hp.png"}
                                             alt="userpic"
                                             className='w-8 h-8 rounded-full cursor-pointer'
                                             onClick={() => setShowDropdown((prev) => !prev)}
