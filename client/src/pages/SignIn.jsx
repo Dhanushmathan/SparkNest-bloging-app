@@ -47,7 +47,7 @@ const SignIn = () => {
       }
 
       if (res.ok) {
-        dispatch(signInSuccess(data));
+        dispatch(signInSuccess(data.user));
         navigate('/');
       }
 

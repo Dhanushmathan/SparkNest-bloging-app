@@ -93,7 +93,7 @@ const Header = () => {
                                         <img
                                             src={currentUser.profilePicture ? currentUser.profilePicture : "https://static-00.iconduck.com/assets.00/profile-circle-icon-512x512-zxne30hp.png"}
                                             alt="userpic"
-                                            className='w-8 h-8 rounded-full cursor-pointer'
+                                            className='w-8 h-8 rounded-full cursor-pointer object-cover'
                                             onClick={() => setShowDropdown((prev) => !prev)}
                                         />
                                         {showDropdown && (
