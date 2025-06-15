@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import sparknestLogo from '../assets/sparknest logo.png';
 import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { signoutSuccess } from '../redux/user/userSlice';
 
 const Header = () => {
 
     const [isNavOpen, setIsNavOpen] = useState(false);
     const { currentUser } = useSelector(state => state.user);
+
+    const dispatch = useDispatch();
 
     const [showDropdown, setShowDropdown] = useState(false);
     const navRef = useRef();
@@ -20,6 +23,24 @@ const Header = () => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.addEventListener('mousedown', handleClickOutside);
     }, []);
+
+    const handleSignout = async () => {
+        try {
+            const res = await fetch('/api/users/signout', {
+                method: 'POST',
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                console.log(data.message);
+            } else {
+                dispatch(signoutSuccess());
+            }
+
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
     return (
         <header className='bg-white flex justify-between items-center sm:px-4 sm:py-2 px-2 py-1.5 font-poppins shadow-md space-x-2'>
@@ -123,7 +144,7 @@ const Header = () => {
                                                 <button
                                                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm cursor-pointer"
                                                     onClick={() => {
-                                                        // sign out logic here
+                                                        handleSignout();
                                                         setShowDropdown(false);
                                                     }}
                                                 >

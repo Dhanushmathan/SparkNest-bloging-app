@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUserFailure, deleteUserStart, deleteUserSuccess } from "../redux/user/userSlice";
+import { deleteUserFailure, deleteUserStart, deleteUserSuccess, signoutSuccess } from "../redux/user/userSlice";
 
 const DashSidebar = () => {
 
@@ -54,6 +54,24 @@ const DashSidebar = () => {
         }
     };
 
+    const handleSignout = async () => {
+        try {
+            const res = await fetch('/api/users/signout', {
+                method: 'POST',
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                console.log(data.message);
+            } else {
+                dispatch(signoutSuccess());
+            }
+
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
     return (
         <div className="">
             <div className="md:hidden w-full bg-gray-200 z-40 flex items-center px-2 py-2 shadow">
@@ -94,7 +112,7 @@ const DashSidebar = () => {
                         </li>
                     </ul>
                     <div className="p-2 md:p-4 border-t border-gray-300 mt-8 flex flex-col items-start">
-                        <a href="#" className="text-center font-medium text-gray-600 hover:text-gray-800">
+                        <a href="#" className="text-center font-medium text-gray-600 hover:text-gray-800" onClick={handleSignout}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="inline-block w-5 h-5 mr-2 align-text-bottom"
@@ -108,7 +126,7 @@ const DashSidebar = () => {
                         </a>
                         <a
                             href="#"
-                            className="mt-4 text-red-600 hover:text-red-800 font-medium transition"
+                            className="mt-6 text-red-600 hover:text-red-800 font-medium transition"
                             onClick={() => setShowModel(true)}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-5 h-5 mr-2 align-text-bottom" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.172 14.828L12.001 12m2.828-2.828L12.001 12m0 0L9.172 9.172M12.001 12l2.828 2.828M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" /></svg>
