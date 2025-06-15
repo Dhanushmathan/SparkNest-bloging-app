@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import sparknestLogo from '../assets/sparknest logo.png';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
@@ -9,6 +9,17 @@ const Header = () => {
     const { currentUser } = useSelector(state => state.user);
 
     const [showDropdown, setShowDropdown] = useState(false);
+    const navRef = useRef();
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (navRef.current && !navRef.current.contains(e.target)) {
+                setIsNavOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.addEventListener('mousedown', handleClickOutside);
+    }, []);
 
     return (
         <header className='bg-white flex justify-between items-center sm:px-4 sm:py-2 px-2 py-1.5 font-poppins shadow-md space-x-2'>
@@ -53,7 +64,7 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" viewBox="0 0 24 24"><path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
                     </button>
                 </div>
-                <nav className={`${isNavOpen ? 'block animate-slide-down sm:flex' : 'hidden'} absolute md:block sm:static top-12 left-0 w-[85%] h-[80%] bg-white shadow-md sm:shadow-none sm:bg-transparent z-10 transition-all duration-300 ease-in-out`}>
+                <nav ref={navRef} className={`${isNavOpen ? 'block animate-slide-down sm:flex' : 'hidden'} absolute md:block sm:static top-12 left-0 w-[85%] h-[80%] bg-white shadow-md sm:shadow-none sm:bg-transparent z-10 transition-all duration-300 ease-in-out`}>
                     <button
                         className="sm:hidden absolute top-3 right-4 z-20 p-1 rounded-full hover:bg-gray-200 transition cursor-pointer"
                         onClick={() => setIsNavOpen(false)}
