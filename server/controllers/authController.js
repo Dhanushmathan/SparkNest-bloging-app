@@ -49,6 +49,7 @@ export const signin = async (req, res, next) => {
         const token = jwt.sign(
             {
                 id: validUser._id,
+                isAdmin: validUser.isAdmin,
             },
             process.env.JWT_SECRET,
         );
@@ -80,7 +81,7 @@ export const google = async (req, res, next) => {
     try {
         const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
-            const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET);
+            const token = jwt.sign({ id: existingUser._id, isAdmin: existingUser.isAdmin }, process.env.JWT_SECRET);
             const { password, ...rest } = existingUser._doc; // Destructure to remove password and other sensitive fields
             res.status(200).cookie('access_token', token, {
                 httpOnly: true,
@@ -95,7 +96,7 @@ export const google = async (req, res, next) => {
                 profilePicture: googlePhotoURL
             });
             await newUser.save();
-            const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+            const token = jwt.sign({ id: newUser._id, isAdmin: newUser.isAdmin }, process.env.JWT_SECRET);
             const { password, ...rest } = newUser._doc;
             res.status(200).cookie('access_token', token, {
                 httpOnly: true,
