@@ -1,5 +1,4 @@
-import React from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import SignIn from './pages/SignIn';
@@ -10,6 +9,9 @@ import Header from './components/Header';
 import Search from './components/Search';
 import Footer from './components/Footer';
 import PrivateRoute from './components/PrivateRoute';
+import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute';
+import CreatePostModal from './pages/CreatePost';
+import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
 
@@ -25,9 +27,13 @@ const App = () => {
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route element={<PrivateRoute />}>
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path={`/:username/dashboard/`} element={<Dashboard />} />
+        </Route>
+        <Route element={<OnlyAdminPrivateRoute />}>
+          <Route path="/overlay/create-posts" element={<CreatePostModal />} />
         </Route>
         <Route path='/projects' element={<Projects />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {pathname !== '/search' && <Footer />}
     </div>

@@ -14,10 +14,13 @@ const Header = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const navRef = useRef();
 
+    const username = currentUser ? currentUser.username.replace(/\s+/g, '').toLowerCase() : null;
+
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (navRef.current && !navRef.current.contains(e.target)) {
                 setIsNavOpen(false);
+                setShowDropdown(false);
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
@@ -104,7 +107,7 @@ const Header = () => {
                             <Link to="/projects" className='hover:text-emerald-700 text-[15px] lg:text-[16px]'>Projects</Link>
                         </li>
                         <li className='hover:scale-105 transition-transform duration-200'>
-                            <Link to="/dashboard" className='hover:text-emerald-700 text-[15px] lg:text-[16px]'>Dashboard</Link>
+                            <Link to={`${username}/dashboard`} className='hover:text-emerald-700 text-[15px] lg:text-[16px]'>Dashboard</Link>
                         </li>
                         {
                             currentUser ? (
@@ -129,7 +132,7 @@ const Header = () => {
                                             onClick={() => setShowDropdown((prev) => !prev)}
                                         />
                                         {showDropdown && (
-                                            <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-20 py-2">
+                                            <div ref={navRef} className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-20 py-2">
                                                 <div className="px-4 py-2 border-b border-gray-100">
                                                     <div className="font-medium text-[13px] text-gray-800">{currentUser.username}</div>
                                                     <div className="text-[11px] text-gray-500">{currentUser.email}</div>

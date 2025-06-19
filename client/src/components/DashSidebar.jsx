@@ -14,12 +14,16 @@ const DashSidebar = () => {
     const { currentUser, error } = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
+    const username = currentUser?.username?.toLowerCase().replace(/\s+/g, '');
+
     useEffect(() => {
         const urlParams = new URLSearchParams(location.search);
         const tabFromUrl = urlParams.get('tab');
+
         if (tabFromUrl) {
             setTab(tabFromUrl);
         }
+
     }, [location.search]);
 
     useEffect(() => {
@@ -74,7 +78,7 @@ const DashSidebar = () => {
 
     return (
         <div className="">
-            <div className="md:hidden w-full bg-gray-200 z-40 flex items-center px-2 py-2 shadow">
+            <div className="md:hidden w-full min-h-screen bg-gray-200 z-40 flex items-center px-2 py-2 shadow">
                 <button
                     type="button"
                     aria-label="Open sidebar"
@@ -96,11 +100,13 @@ const DashSidebar = () => {
                                 Home
                             </span>
                         </li>
-                        <li className="flex items-center px-2 py-2 rounded hover:bg-gray-300 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-5 h-5 mr-2 align-text-bottom" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M3 21V3h18v18zm15-4H6v1.5h12zM6 15.5h12V14H6zM6 12h12V6H6zm0 5v1.5zm0-1.5V14zM6 12V6zm0 2v-2zm0 3v-1.5z"></path></svg>
-                            <span>
-                                Posts
-                            </span>
+                        <li className={`flex items-center px-2 py-2 rounded hover:bg-gray-300 transition ${tab === 'posts' ? 'bg-gray-300' : ''}`}>
+                            <Link to={`?tab=posts`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-5 h-5 mr-2 align-text-bottom" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M3 21V3h18v18zm15-4H6v1.5h12zM6 15.5h12V14H6zM6 12h12V6H6zm0 5v1.5zm0-1.5V14zM6 12V6zm0 2v-2zm0 3v-1.5z"></path></svg>
+                                <span>
+                                    Posts
+                                </span>
+                            </Link>
                         </li>
                         <li className={`flex items-center px-2 py-2 rounded hover:bg-gray-300 transition ${tab === 'profile' ? 'bg-gray-300' : ''}`}>
                             <Link to={`?tab=profile`} className="flex items-center">

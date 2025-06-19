@@ -247,6 +247,34 @@ const DashProfile = () => {
           <p>Comments</p>
         </div>
       </div>
+      <div className="flex justify-around mt-8 bg-gray-100 rounded-lg p-6 text-center text-base">
+        <div>
+          <p className="text-xl font-bold">2</p>
+          <p>Blogs</p>
+        </div>
+        <div>
+          <p className="text-xl font-bold">30</p>
+          <p>Likes</p>
+        </div>
+        <div>
+          <p className="text-xl font-bold">12</p>
+          <p>Comments</p>
+        </div>
+      </div>
+      <div className="flex justify-around mt-8 bg-gray-100 rounded-lg p-6 text-center text-base">
+        <div>
+          <p className="text-xl font-bold">2</p>
+          <p>Blogs</p>
+        </div>
+        <div>
+          <p className="text-xl font-bold">30</p>
+          <p>Likes</p>
+        </div>
+        <div>
+          <p className="text-xl font-bold">12</p>
+          <p>Comments</p>
+        </div>
+      </div>
 
       {/* Blog posts */}
       <div className="mt-8 space-y-4">
