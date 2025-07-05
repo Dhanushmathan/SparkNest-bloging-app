@@ -138,7 +138,7 @@ const Header = () => {
                                                     <div className="text-[11px] text-gray-500">{currentUser.email}</div>
                                                 </div>
                                                 <Link
-                                                    to="/dashboard?tab=profile"
+                                                    to={`${username}/dashboard?tab=profile`}
                                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
                                                     onClick={() => setShowDropdown(false)}
                                                 >

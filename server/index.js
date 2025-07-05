@@ -4,6 +4,7 @@ import cors from 'cors';
 import { connectDB } from './config/config.js';
 import userRouter from './routes/userRoutes.js';
 import authRouter from './routes/authRoutes.js';
+import postRoutes from './routes/postRoutes.js';
 // import profileRouter from './routes/userRoutes.js';
 import cookieParser from 'cookie-parser';
 
@@ -18,6 +19,7 @@ connectDB();
 
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/post', postRoutes);
 // app.use('/api/profile', profileRouter);
 
 // Middleware to handle 404 errors
